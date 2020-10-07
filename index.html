@@ -6,13 +6,13 @@
     <title>TP3-JavaScript</title>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script type="text/javascript" src="/index.js"></script>
 </head>
 <body onload = "load()">
-    <section class="main-container">
 
-        <header class="main-header">
-            
+    <section class="card-container">
+        <header class="card-header">
             <div>
                 <h1 class="header-title1">
                     Manage
@@ -21,21 +21,28 @@
             </div>
 
             <div>
-                <button class="button" id="btn" class="btn-add">Add New Employee</button>
+                <button id="btn" class="btn-add">  
+                    <i class="material-icons">&#xE147;</i>
+                    Add New Employee
+                </button>
             </div>
-
         </header>
 
-        <div class="main-content">
+        <div class="card-content">
+
+            <div class="contenedor-input"> 
+                <input type="text" value="Filter..." class="input-filter"></input> 
+            </div>
+
             <table>
                 <tbody>
                     <thead class="main-tabla">
+                        <td> <input type="checkbox" class="checkbox"></input> </td>
                         <td>Name</td>
                         <td>Email</td>
                         <td>Address</td>
                         <td>Phone</td>
                         <td>Action</td>
-                        
                     </thead>
                 </tbody>
             </table>
