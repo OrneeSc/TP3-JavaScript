@@ -4,10 +4,8 @@ body {
     justify-content: center;
 }
 table{
-    border-bottom: 2px solid #ddd;
     border-collapse: collapse;
     margin: 40px;
-    height: 100vh;
 }
 .card-container{
     align-items: center;
@@ -47,17 +45,14 @@ span{
 
 .card-content{
     background-color: white;
-    height: 180px;
     width: 100%;
     display: flex;
     justify-content:space-between;
     flex-direction:column;
 }
 .card-content table {
-    border-bottom: 2px solid #ddd;
     border-collapse: collapse;
     margin: 24px 23px;
-    height: 100vh;
 }
 .contenedor-input{
     display:flex;
@@ -111,6 +106,7 @@ span{
 
 .main-tabla td {
     padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
 }
 
 .checkbox {
