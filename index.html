@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP3-JavaScript</title>
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <script type="text/javascript" src="/index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </head>
 <body onload = "load()">
 
@@ -35,15 +35,18 @@
             </div>
 
             <table>
-                <tbody>
-                    <thead class="main-tabla">
+                <thead class="main-tabla">
+                    <tr>
                         <td> <input type="checkbox" class="checkbox"></input> </td>
                         <td>Name</td>
                         <td>Email</td>
                         <td>Address</td>
                         <td>Phone</td>
-                        <td>Action</td>
-                    </thead>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody id="main-tabla_tbody">
+
                 </tbody>
             </table>
         

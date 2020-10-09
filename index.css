@@ -16,7 +16,7 @@ table{
     flex-direction: column;
     height: 80%;
     justify-content: center;
-    margin:20px;
+    margin:20px 0px;
     width: 1140px;
     font-family: 'Varela Round', sans-serif;
 }
@@ -24,9 +24,11 @@ table{
     background: #435d7d;
     height: 65px;
     width: 100%;
+    box-sizing: border-box;
+    padding: 0 29px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 span{
     color: white;
@@ -51,17 +53,24 @@ span{
     justify-content:space-between;
     flex-direction:column;
 }
+.card-content table {
+    border-bottom: 2px solid #ddd;
+    border-collapse: collapse;
+    margin: 24px 23px;
+    height: 100vh;
+}
 .contenedor-input{
     display:flex;
     justify-content:flex-end;
-    margin-top: 25px;
+    margin-top: 29px;
 }
 .input-filter{
-    width:300px;
-    height: 25px;
+    width: 344px;
+    height: 34px;
     border-radius: 5px;
-    padding: 5px 5px;
-    margin-right: 40px;
+    box-sizing: border-box;
+    padding: 5px 13px;
+    margin-right: 26px;
     color: #555;
     border: 1px solid #ccc;
     font-family: 'Varela Round', sans-serif;
@@ -99,3 +108,30 @@ span{
     font-weight: 600;
     font-size: 13px;
 }
+
+.main-tabla td {
+    padding-bottom: 8px;
+}
+
+.checkbox {
+    width: 18px;
+    height: 30px;
+    margin: -4px 15px;
+}
+
+.main-tabla tr > td:nth-child(1) {
+    width: 73px;
+}
+.main-tabla tr > td:nth-child(2) {
+    width: 219px;
+}
+.main-tabla tr > td:nth-child(3) {
+    width: 210px;
+}
+.main-tabla tr > td:nth-child(4) {
+    width: 262px;
+}
+.main-tabla tr > td:nth-child(5) {
+    width: 232px;
+}
+
