@@ -131,3 +131,12 @@ span{
     width: 232px;
 }
 
+.btnDelete {
+    background-color: red;
+}
+
+.btnEditar {
+    background-color: #5cb85c;
+}
+
+
