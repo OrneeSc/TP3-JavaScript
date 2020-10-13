@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP3-JavaScript</title>
     <link rel="stylesheet" href="./index.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script type="text/javascript" src="index.js"></script>
 </head>
-<body onload = "load()">
+
+<body onload="load()">
 
     <section class="card-container">
         <header class="card-header">
             <div>
                 <h1 class="header-title1">
                     Manage
-                    <span>Employees</span> 
+                    <span>Employees</span>
                 </h1>
             </div>
 
             <div>
-                <button id="btn" class="btn-add">  
-                    <i class="material-icons">&#xE147;</i>
+                <button id="add-new-user-button" class="btn-add">
+                    <i class="material-icons">add_circle</i>
                     Add New Employee
                 </button>
             </div>
@@ -31,8 +33,8 @@
 
         <div class="card-content">
 
-            <div class="contenedor-input"> 
-                <input id="search" type="text" placeholder="Filter..." class="input-filter"></input> 
+            <div class="contenedor-input">
+                <input id="search" type="text" placeholder="Filter..." class="input-filter"></input>
             </div>
 
             <table>
@@ -50,16 +52,37 @@
 
                 </tbody>
             </table>
-        
-
         </div>
-
-
-
-
     </section>
 
+    <!-- USER MODAL -->
+    <section id="new-user-modal" class="new-user-modal">
+        <div class="new-user-container">
+            <header>
+                <div class="new-user-title">Add Employee</div>
+                <button id="new-user-close" class="new-user-close">
+                    <span class="material-icons">close</span>
+                </button>
+            </header>
 
-    
+            <form class="new-user-form">
+                <label for="name">Name</label>
+                <input type="text" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" required>
+                <label for="address">Address</label>
+                <textarea name="address" cols="30" rows="3" required></textarea>
+                <label for="phone">Phone</label>
+                <input type="phone" name="phone" required>
+
+                <footer>
+                    <button id="new-user-cancel" class="button-cancel">Cancel</button>
+                    <button id="new-user-add" class="button-add" type="submit">Add</button>
+                </footer>
+            </form>
+
+        </div>
+    </section>
 </body>
+
 </html>

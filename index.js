@@ -91,20 +91,25 @@ const loadApi = async () => {
 
 const load = () => {
     const inputSearch = document.querySelector("#search");
+    const addNewUserButton = document.querySelector("#add-new-user-button");
+    const addNewUserButtonClose = document.querySelector("#new-user-close");
+    const addNewUserButtonCancel = document.querySelector("#new-user-cancel");
 
 
     console.log("el inputsearch es:", inputSearch);
-
     inputSearch.addEventListener("keypress",(e) => {
         if (e.key === 'Enter'){
             search();
         }
     });
 
+    addNewUserButton.addEventListener("click", toggleNewUserModal);
+    addNewUserButtonClose.addEventListener("click", toggleNewUserModal);
+    addNewUserButtonCancel.addEventListener("click", toggleNewUserModal);
     loadApi();
 }
 
-//Filtrar:
+// //Filtrar:
 const search = async () => {
     console.log("LLamaste al search!");
     const inputSearch = document.querySelector("#search").value;
@@ -121,6 +126,22 @@ const search = async () => {
         console.log("ERROR", err);
     }
 }
+
+// //ADD NEW USER MODAL
+
+const toggleNewUserModal = () => {
+    const newUserModal = document.querySelector("#new-user-modal");
+    newUserModal.classList.toggle("show-modal");
+}
+
+
+// 4-Al hacer click en el botón Nuevo, mostrar en un modal un formulario con los siguientes datos y un botón de guardar:
+
+// Nombre (Máximo 50 carácteres)
+// Dirección (Máximo 60 carácteres)
+// Telefono (Solo números, espacios y/o guiones medios. Validar el formato utilizando expresiones regulares)
+// Email (Validar el formato utilizando expresiones regulares)
+// Al hacer click en el botón guardar, primero se debe validar que los campos sean válidos. En caso afirmativo, hacer un POST a la ruta /users enviando el objeto con las 4 propiedades (fullname, email, address, phone).
 
 
 
