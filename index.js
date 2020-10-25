@@ -24,11 +24,6 @@ hacer un POST a la ruta /users enviando el objeto con las 4 propiedades
 */
 
 
-
-
-
-
-
 // / / / / / / / / / / / / / / / / /
 const vaciarTabla = () => {
     const trALL = document.querySelectorAll("#main-tabla_tbody > tr");

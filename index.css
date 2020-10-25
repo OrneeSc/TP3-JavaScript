@@ -132,11 +132,34 @@ span{
 }
 
 .btnDelete {
-    background-color: red;
+    background-color: rgb(240, 32, 32);
+    outline: none;
+    border: 1px solid rgb(240, 32, 32);
+    cursor: pointer;
+    border-radius: 5px;
 }
-
+.btnDelete:active{
+    background-color:white;
+}
+/* .btnDelete:hover{
+    background-color: white;
+} */
 .btnEditar {
     background-color: #5cb85c;
+    outline: none; 
+    border: 1px solid #5cb85c;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btnEditar:active{
+    background-color:white;
+}
+/* .btnEditar:hover{
+    background-color: white;
+} */
+
+.material-icons {
+    font-size: 20px;
 }
 
 
