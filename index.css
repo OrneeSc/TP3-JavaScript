@@ -58,6 +58,7 @@ span{
     display:flex;
     justify-content:flex-end;
     margin-top: 29px;
+    padding-right: 30px;
 }
 .input-filter{
     width: 344px;
@@ -154,12 +155,64 @@ span{
 .btnEditar:active{
     background-color:white;
 }
-/* .btnEditar:hover{
-    background-color: white;
-} */
-
 .material-icons {
     font-size: 20px;
 }
 
+section.new-user-modal {
+    background-color:#808080c7;;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
 
+.new-user-modal.show-modal {
+    display: flex;
+}
+
+.new-user-container {
+    width: 40%;
+    background-color: white;
+    padding: 20px;
+}
+
+.new-user-container header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+
+.new-user-close {
+    background: none;
+    color: black;
+    border: none;
+}
+
+.new-user-close .material-icons {
+    color: lightgray;
+    font-size: 20px;
+}
+
+.new-user-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-user-form label{
+    margin-top: 10px
+}
+
+.new-user-container footer {
+    border-top: 1px solid lightgray;
+    margin-top: 20px;
+    padding: 14px 0px;
+    display: flex;
+    justify-content: flex-end;
+}
