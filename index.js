@@ -13,6 +13,8 @@ hacer un POST a la ruta /users enviando el objeto con las 4 propiedades
     haremos un PUT a la ruta /users/:id.
 */
 
+let users = [];
+
 
 // / / / / / / / / / / / / / / / / /
 const vaciarTabla = () => {
@@ -36,19 +38,14 @@ const showDataTable = (id, name, email, address, phone) => {
     const btnDelete = document.createElement("button");
     const btnEditar = document.createElement("button");
 
-    const edit = document.querySelector('#edit-user-add');
-    edit.addEventListener("click", () => {
-        console.log('el id que voy a cambiar es', id)
-        editUserToApi(id)
-    });
-
+   
     tr.id = 'tr-' + id;
     btnDelete.innerHTML = `<i class="material-icons" title="Delete">&#xE872;</i>`;
     btnEditar.innerHTML = `<i class="material-icons" title="Edit">&#xE254;</i>`;
     btnDelete.className = "btnDelete";
     btnEditar.className = "btnEditar";
     btnDelete.addEventListener('click', () => {btnDeleteUser(id)});
-    btnEditar.addEventListener('click', () => {toggleEditUserModal()});
+    btnEditar.addEventListener('click', () => {toggleEditUserModal(id)});
     inputCheck.className = "checkbox";
     inputCheck.type = "checkbox";
     tdCheck.appendChild(inputCheck);
@@ -96,7 +93,8 @@ const loadApi = async () => {
         console.log("lo que hay en api.data es", api.data);
         api.data.forEach(item => {
             showDataTable(item.id, item.fullname, item.email, item.address, item.phone);
-        })
+        });
+        users = api.data;
     } catch(err) {
         console.log("ERROR", err);
     }
@@ -141,6 +139,7 @@ const editUserToApi = async (id) => {
             email: document.querySelector('#input-email-edit').value
         }
         const res = await axios.put(`https://5f7c70d600bd74001690ac5e.mockapi.io/users/${id}`, editUser)
+        window.location.reload();
         console.log('el usuario editado es:', res.data)
     }catch(err) {
         console.log(err)
@@ -199,8 +198,23 @@ const toggleNewUserModal = () => {
 }
 
 //EDIT USER MODAL
-const toggleEditUserModal = () => {
-    //FALTA: completar los input
+const toggleEditUserModal = (id) => {
+
     const editUserModal = document.querySelector("#edit-user-modal");
     editUserModal.classList.toggle("show-modal");
+
+    const user = users.find(data => data.id === id);
+    if (user) {
+        document.querySelector('#input-name-edit').value = user.fullname;
+        document.querySelector('#input-address-edit').value = user.address;
+        document.querySelector('#input-phone-edit').value = user.phone;
+        document.querySelector('#input-email-edit').value = user.email;
+
+        const edit = document.querySelector('#edit-user-add');
+        edit.addEventListener("click", () => {
+            //console.log('el id que voy a cambiar es', id)
+            editUserToApi(id)
+        });
+    
+    }
 }
