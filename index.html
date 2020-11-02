@@ -34,8 +34,7 @@
         <div class="card-content">
 
             <div class="contenedor-input">
-                <input type="text" id="search" /> 
-                <!-- <input id="search" type="text" placeholder="Filter..." class="input-filter"></input> -->
+                <input type="text" id="search" class="input" placeholder="Filter..." /> 
             </div>
 
             <table>
@@ -69,15 +68,15 @@
 
             <form class="new-user-form">
                 <label for="name">Name</label>
-                <input id= 'input-name' type="text" name="name" maxlength="50" required>
+                <input id= 'input-name' type="text" class="input" name="name" maxlength="50" required>
                 <label for="email">Email</label>
-                <input id='input-email' type="email" name="email" required>
+                <input id='input-email' type="email" class="input" name="email" required>
                 <label for="address">Address</label>
                 <textarea id='input-address' name="address" maxlength="60" cols="30" rows="3" required></textarea>
                 <label for="phone">Phone</label>
-                <input id='input-phone' type="phone" name="phone" pattern='[0-9]{3,15}' required>
+                <input id='input-phone' type="phone" class="input" name="phone" pattern='[0-9]{3,15}' required>
 
-                <footer>
+                <footer class="footer-modal">
                     <button id="new-user-cancel" class="button-cancel" type="button">Cancel</button>
                     <button id="new-user-add" class="button-add" type="button">Add</button>
                 </footer>
@@ -96,26 +95,21 @@
 
             <form class="new-user-form">
                 <label for="name">Name</label>
-                <input id= 'input-name-edit' type="text" name="name" maxlength="50" required>
+                <input id= 'input-name-edit' type="text" class='input' name="name" maxlength="50" required>
                 <label for="email">Email</label>
-                <input id='input-email-edit' type="email" name="email" required>
+                <input id='input-email-edit' type="email" class='input' name="email" required>
                 <label for="address">Address</label>
                 <textarea id='input-address-edit' name="address" maxlength="60" cols="30" rows="3" required></textarea>
                 <label for="phone">Phone</label>
-                <input id='input-phone-edit' type="phone" name="phone" pattern='[0-9]{3,15}' required>
+                <input id='input-phone-edit' type="phone" class='input' name="phone" pattern='[0-9]{3,15}' required>
 
                 <footer>
-                    <button id="edit-user-cancel" class="button-cancel-edit" type="button">Cancel</button>
-                    <button id="edit-user-add" class="button-add-edit" type="button">Edit</button>
+                    <button id="edit-user-cancel" class="button-cancel" type="button">Cancel</button>
+                    <button id="edit-user-add" class="button-add" type="button">Edit</button>
                 </footer>
             </form>
         </section>
 
-            <!-- <div class="delete-user-modal">
-                <h1>Desea eliminar este usuario?</h1>
-                <button id="button-si" class="button-si">Si</button>
-                <button id="button-no" class="button-no" >No</button>
-            </div> -->
 
 
         </div>

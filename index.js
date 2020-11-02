@@ -1,17 +1,11 @@
-/*
-4.  En caso afirmativo, 
-hacer un POST a la ruta /users enviando el objeto con las 4 propiedades 
-(fullname, email, address, phone).
 
-
-6.Cada elemento en la tabla tendrá la acción editar. 
-    Al hacer click en editar, mostrar en un modal un formulario 
-    con los mismos campos (y validaciones) que el fomulario nuevo, 
-    con todos los datos pre-cargados. Al finalizar la edición, 
-    debemos validar que todos los datos ingresados sean correctos 
-    (al igual que en la creación). Si los datos son correctos, 
-    haremos un PUT a la ruta /users/:id.
-*/
+// 6.Cada elemento en la tabla tendrá la acción editar. 
+//     Al hacer click en editar, mostrar en un modal un formulario 
+//     con los mismos campos (y validaciones) que el fomulario nuevo, 
+//     con todos los datos pre-cargados. Al finalizar la edición, 
+//     debemos validar que todos los datos ingresados sean correctos 
+//     (al igual que en la creación). Si los datos son correctos, 
+//     haremos un PUT a la ruta /users/:id.
 
 
 // / / / / / / / / / / / / / / / / /
@@ -82,11 +76,6 @@ const deleteUserApi = async (id) => {
         console.log(err)
     }
 }
-
-// const btnEditUser = id => {
-//     const chau = e.target.parentElement.parentElement;
-//     console.log(chau);
-// }
 
 
 const loadApi = async () => {
@@ -179,12 +168,12 @@ const search = async () => {
     //////////// ya busca por tres letras pero busca un solo resultado... VER  /////////////////
     try {
         const api = await axios.get("https://5f7c70d600bd74001690ac5e.mockapi.io/users")
-        const resBusqueda = api.data.filter(item => item.fullname.toLowerCase().indexOf(inputSearch) > -1 ||
-        String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || item.email.toLowerCase().indexOf(inputSearch) > -1 ||
-        String(item.nivel).indexOf(inputSearch) > -1 == inputSearch == inputSearch || item.address.toLowerCase().indexOf(inputSearch) > -1 ||
-        String(item.nivel).indexOf(inputSearch) > -1 == inputSearch == inputSearch || item.phone.toLowerCase().indexOf(inputSearch) > -1 ||
-        String(item.nivel).indexOf(inputSearch) > -1 == inputSearch == inputSearch);
-        console.log("El resBusqueda es", resBusqueda);
+        const resBusqueda = api.data.filter(item =>
+            item.fullname.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
+            item.email.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
+            item.address.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
+            item.phone.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch );
+        
         showDataTable(resBusqueda[0].fullname, resBusqueda[0].email, resBusqueda[0].address, resBusqueda[0].phone)
     } catch(err) {
         console.log("ERROR", err);
