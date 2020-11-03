@@ -49,24 +49,22 @@
                     </tr>
                 </thead>
                 <tbody id="main-tabla_tbody">
-
                 </tbody>
             </table>
 
         </div>
     </section>
 
-    <!-- USER MODAL -->
     <section id="new-user-modal" class="new-user-modal">
         <div class="new-user-container">
             <header>
                 <div class="new-user-title">Add Employee</div>
-                <button id="new-user-close" class="new-user-close">
-                    <span class="material-icons">close</span>
-                </button>
+                    <button id="new-user-close" class="new-user-close">
+                        <span class="material-icons">close</span>
+                    </button>
             </header>
 
-            <form class="new-user-form">
+            <form class="new-user-form" id="new-user-form">
                 <label for="name">Name</label>
                 <input id= 'input-name' type="text" class="input" name="name" maxlength="50" required>
                 <label for="email">Email</label>
@@ -78,22 +76,22 @@
 
                 <footer class="footer-modal">
                     <button id="new-user-cancel" class="button-cancel" type="button">Cancel</button>
-                    <button id="new-user-add" class="button-add" type="button">Add</button>
+                    <button id="new-user-add" class="button-add" type="submit">Add</button>
                 </footer>
             </form>
         </section>
 
-    <!-- EDIT USER MODAL -->
+    
         <section id="edit-user-modal" class="new-user-modal">
             <div class="new-user-container">
                 <header>
                     <div class="new-user-title">Edit Employee</div>
-                    <button id="edit-user-close" class="new-user-close">
-                        <span class="material-icons">close</span>
-                    </button>
+                        <button id="edit-user-close" class="new-user-close">
+                            <span class="material-icons">close</span>
+                        </button>
                 </header>
 
-            <form class="new-user-form">
+            <form class="new-user-form" id="edit-user-form">
                 <label for="name">Name</label>
                 <input id= 'input-name-edit' type="text" class='input' name="name" maxlength="50" required>
                 <label for="email">Email</label>
@@ -105,16 +103,12 @@
 
                 <footer>
                     <button id="edit-user-cancel" class="button-cancel" type="button">Cancel</button>
-                    <button id="edit-user-add" class="button-add" type="button">Edit</button>
+                    <button id="edit-user-add" class="button-add" type="submit">Edit</button>
                 </footer>
             </form>
         </section>
-
-
-
         </div>
 
-    
 </body>
 
 </html>

@@ -1,21 +1,9 @@
-
-// 6.Cada elemento en la tabla tendrá la acción editar. 
-//     Al hacer click en editar, mostrar en un modal un formulario 
-//     con los mismos campos (y validaciones) que el fomulario nuevo, 
-//     con todos los datos pre-cargados. Al finalizar la edición, 
-//     debemos validar que todos los datos ingresados sean correctos 
-//     (al igual que en la creación). Si los datos son correctos, 
-//     haremos un PUT a la ruta /users/:id.
-
 let users = [];
 
-
-// / / / / / / / / / / / / / / / / /
 const vaciarTabla = () => {
     const trALL = document.querySelectorAll("#main-tabla_tbody > tr");
-    console.log("Los hijos de main_tabla son:", trALL);
     trALL.forEach(tr=>tr.remove());
-}
+};
 
 const showDataTable = (id, name, email, address, phone) => {
 
@@ -32,7 +20,6 @@ const showDataTable = (id, name, email, address, phone) => {
     const btnDelete = document.createElement("button");
     const btnEditar = document.createElement("button");
 
-   
     tr.id = 'tr-' + id;
     btnDelete.innerHTML = `<i class="material-icons" title="Delete">&#xE872;</i>`;
     btnEditar.innerHTML = `<i class="material-icons" title="Edit">&#xE254;</i>`;
@@ -58,28 +45,25 @@ const showDataTable = (id, name, email, address, phone) => {
     tr.appendChild(tdEditar);
     tr.appendChild(tdDelete);
     tBody.appendChild(tr);
-}
+};
 
 const btnDeleteUser = id => {
     document.querySelector(`#tr-${id}`).remove();
     deleteUserApi(id);
-}
+};
 
 const deleteUserApi = async (id) => {
     try {
         const res = await axios.delete(`https://5f7c70d600bd74001690ac5e.mockapi.io/users/${id}`);
-        console.log(res.data);
     }catch(err) {
         console.log(err)
     }
-}
-
+};
 
 const loadApi = async () => {
 
     try {
         const api = await axios.get("https://5f7c70d600bd74001690ac5e.mockapi.io/users")
-        console.log("lo que hay en api.data es", api.data);
         api.data.forEach(item => {
             showDataTable(item.id, item.fullname, item.email, item.address, item.phone);
         });
@@ -95,11 +79,10 @@ const load = () => {
     const addNewUserButtonClose = document.querySelector("#new-user-close");
     const addNewUserButtonCancel = document.querySelector("#new-user-cancel");
 
-    //EDIT
+    
     const editUserButtonClose = document.querySelector("#edit-user-close");
     const editUserButtonCancel = document.querySelector("#edit-user-cancel");
 
-    console.log("el inputsearch es:", inputSearch);
     inputSearch.addEventListener("keydown",(e) => {
         if (e.keyCode == 13 || e.keyCode ==  8){
             search();
@@ -110,13 +93,13 @@ const load = () => {
     addNewUserButtonClose.addEventListener("click", toggleNewUserModal);
     addNewUserButtonCancel.addEventListener("click", toggleNewUserModal);
 
-    //EDIT
+    
     editUserButtonClose.addEventListener("click", toggleEditUserModal);
     editUserButtonCancel.addEventListener("click", toggleEditUserModal);
-    loadApi(); // esta funcion muestra los datos de la api completa
+    loadApi(); 
 
-    const add = document.querySelector('#new-user-add');
-    add.addEventListener("click", addNewUserToApi); // onsubmit ?? y funcion .submit
+    const add = document.querySelector('#new-user-form');
+    add.addEventListener("submit", addNewUserToApi); 
 };
 
 const editUserToApi = async (id) => {
@@ -129,30 +112,19 @@ const editUserToApi = async (id) => {
         }
         const res = await axios.put(`https://5f7c70d600bd74001690ac5e.mockapi.io/users/${id}`, editUser)
         window.location.reload();
-        console.log('el usuario editado es:', res.data)
     }catch(err) {
         console.log(err)
     }
 };
 
-// const verificarValores = (phone, email) => {
-//     console.log(typeof phone);
-
-//     if(typeof phone !== 'Number') alert('Ingrese un numero válido por favor');
-//     const findIndex = email.indexOf(e => e !== '@');
-//     if(findIndex === -1) throw new Error ('No incluye @');
-// }
-
-const addNewUserToApi = async () => {
-    console.log("entre a la funcion AddNewUserToApi");
+const addNewUserToApi = async (event) => {   
 
     const fullname = document.querySelector('#input-name').value;
     const address = document.querySelector('#input-address').value;
     const phone = document.querySelector('#input-phone').value;
     const email = document.querySelector('#input-email').value;
 
-    // verificarValores(phone, email);  
-
+    event.preventDefault();
     try{
         let newUser = {
             fullname,
@@ -162,21 +134,17 @@ const addNewUserToApi = async () => {
         }
     
         const res = await axios.post("https://5f7c70d600bd74001690ac5e.mockapi.io/users/", newUser)
-        console.log("la respuesta de la api fue: ", res.data);
         toggleNewUserModal();
         window.location.reload();
 
     }catch (err) {
         console.log(err)
     }
-}
+};
 
-///Filtrar INPUT Buscador:
 
 const search = async () => {
-    console.log("LLamaste al search!");
     const inputSearch = document.querySelector("#search").value.toLowerCase();
-    //TODO: validar(inputSearch) 
     vaciarTabla();
 
     try {
@@ -186,8 +154,6 @@ const search = async () => {
             item.email.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
             item.address.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
             item.phone.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch );
-
-            console.log(resBusqueda);
         
             resBusqueda.forEach(item => {
                 showDataTable(item.id, item.fullname, item.email, item.address, item.phone)
@@ -199,13 +165,11 @@ const search = async () => {
 
 };
 
-// //ADD NEW USER MODAL
 const toggleNewUserModal = () => {
     const newUserModal = document.querySelector("#new-user-modal");
     newUserModal.classList.toggle("show-modal");
-}
+};
 
-//EDIT USER MODAL
 const toggleEditUserModal = (id) => {
 
     const editUserModal = document.querySelector("#edit-user-modal");
@@ -218,11 +182,10 @@ const toggleEditUserModal = (id) => {
         document.querySelector('#input-phone-edit').value = user.phone;
         document.querySelector('#input-email-edit').value = user.email;
 
-        const edit = document.querySelector('#edit-user-add');
-        edit.addEventListener("click", () => {
-            //console.log('el id que voy a cambiar es', id)
+        const edit = document.querySelector('#edit-user-form');
+        edit.addEventListener("submit", (event) => {
+            event.preventDefault();
             editUserToApi(id)
         });
-    
     }
-}
+};
