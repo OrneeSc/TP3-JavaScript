@@ -102,8 +102,8 @@ const load = () => {
     const editUserButtonCancel = document.querySelector("#edit-user-cancel");
 
     console.log("el inputsearch es:", inputSearch);
-    inputSearch.addEventListener("keypress",(e) => {
-        if (e.key === 'Enter'){
+    inputSearch.addEventListener("keydown",(e) => {
+        if (e.keyCode == 13 || e.keyCode ==  8){
             search();
         }
     });
@@ -118,7 +118,7 @@ const load = () => {
     loadApi(); // esta funcion muestra los datos de la api completa
 
     const add = document.querySelector('#new-user-add');
-    add.addEventListener("click", addNewUserToApi);
+    add.addEventListener("click", addNewUserToApi); // onsubmit ?? y funcion .submit
 };
 
 const editUserToApi = async (id) => {
@@ -136,15 +136,30 @@ const editUserToApi = async (id) => {
     }
 };
 
+// const verificarValores = (phone, email) => {
+//     console.log(typeof phone);
+
+//     if(typeof phone !== 'Number') alert('Ingrese un numero válido por favor');
+//     const findIndex = email.indexOf(e => e !== '@');
+//     if(findIndex === -1) throw new Error ('No incluye @');
+// }
+
 const addNewUserToApi = async () => {
     console.log("entre a la funcion AddNewUserToApi");
 
+    const fullname = document.querySelector('#input-name').value;
+    const address = document.querySelector('#input-address').value;
+    const phone = document.querySelector('#input-phone').value;
+    const email = document.querySelector('#input-email').value;
+
+    // verificarValores(phone, email);  
+
     try{
         let newUser = {
-            fullname: document.querySelector('#input-name').value,
-            address: document.querySelector('#input-address').value,
-            phone: document.querySelector('#input-phone').value,
-            email: document.querySelector('#input-email').value
+            fullname,
+            address,
+            phone, 
+            email 
         }
     
         const res = await axios.post("https://5f7c70d600bd74001690ac5e.mockapi.io/users/", newUser)
@@ -165,7 +180,6 @@ const search = async () => {
     //TODO: validar(inputSearch) 
     vaciarTabla();
 
-    //////////// ya busca por tres letras pero busca un solo resultado... VER  /////////////////
     try {
         const api = await axios.get("https://5f7c70d600bd74001690ac5e.mockapi.io/users")
         const resBusqueda = api.data.filter(item =>
@@ -173,8 +187,13 @@ const search = async () => {
             item.email.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
             item.address.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch || 
             item.phone.toLowerCase().indexOf(inputSearch) > -1 || String(item.nivel).indexOf(inputSearch) > -1 == inputSearch );
+
+            console.log(resBusqueda);
         
-        showDataTable(resBusqueda[0].fullname, resBusqueda[0].email, resBusqueda[0].address, resBusqueda[0].phone)
+            resBusqueda.forEach(item => {
+                showDataTable(item.id, item.fullname, item.email, item.address, item.phone)
+            });
+                
     } catch(err) {
         console.log("ERROR", err);
     }
